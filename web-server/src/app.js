@@ -43,6 +43,22 @@ app.get("/weather", (req, res) => {
   res.send(JSON.stringify({ temperature: "-20", location: "Calgary" }));
 });
 
+app.get("/help/*", (req, res) => {
+  res.render("help-four-o-four", {
+    title: "404 page not found",
+    error_msg: "Help article not found.",
+    name: "Ivan Melnychenko"
+  });
+});
+
+app.get("*", (req, res) => {
+  res.render("page-not-found", {
+    title: "404 page not found",
+    error_msg: "This page doesn't exist.",
+    name: "Ivan Melnychenko"
+  });
+});
+
 app.listen(3002, () => {
   console.log("Server is up on port 3002");
 });
