@@ -1,0 +1,17 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "description": "node pet project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Melnychenko97",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "nodemon": "^2.0.4",
+    "validator": "^13.1.1",
+    "yargs": "^15.4.1"
+  }
+}

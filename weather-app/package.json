@@ -1,0 +1,17 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ivmel.ca",
+  "license": "ISC",
+  "dependencies": {
+    "encodeurl": "^1.0.2",
+    "nodemon": "^2.0.5",
+    "postman-request": "^2.88.1-postman.24",
+    "yargs": "^16.1.0"
+  }
+}
