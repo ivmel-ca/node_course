@@ -3,9 +3,14 @@ const express = require("express");
 
 const app = express();
 const publicDirectoryPath = path.join(__dirname, "../public");
+// by default, hbs looks into dir called 'views', below is a
+// path to the arbitrary named dir
+const viewsPath = path.join(__dirname, "../templates");
 
 // enable handlebars to serve dynamic templates
 app.set("view engine", "hbs");
+// points hbs to look for dynamic pages in dir 'templates'
+app.set("views", viewsPath);
 // serve static files
 app.use(express.static(publicDirectoryPath));
 
