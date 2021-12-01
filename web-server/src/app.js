@@ -2,6 +2,29 @@ const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
 
+const forecast = require("./utils/forecast");
+const geocode = require("./utils/geocode");
+
+const getForecast = (city, res) =>
+  geocode(city, (error, { latitude, longtitude, location } = {}) => {
+    if (error)
+      return res.send({
+        error
+      });
+    forecast(latitude, longtitude, (error, forecastData) => {
+      if (error)
+        return res.send({
+          error
+        });
+      return res.send(
+        JSON.stringify({
+          location,
+          forecastData
+        })
+      );
+    });
+  });
+
 const app = express();
 const publicDirectoryPath = path.join(__dirname, "../public");
 // by default, hbs looks into dir called 'views', below is a
@@ -40,18 +63,13 @@ app.get("/help", (req, res) => {
 });
 
 app.get("/weather", (req, res) => {
-  if (!req.query.address) {
+  if (!req.query.city) {
     return res.send({
-      error: "address must be provided"
+      error: "city must be provided"
     });
   }
 
-  res.send(
-    JSON.stringify({
-      temperature: "-20",
-      location: req.query.address
-    })
-  );
+  getForecast(req.query.city, res);
 });
 
 app.get("/products", (req, res) => {
