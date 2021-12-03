@@ -16,20 +16,20 @@ MongoClient.connect(
 
     const db = client.db(databaseName);
 
-    /* db.collection("users").findOne(
-      { _id: new ObjectId("61a9de37e316928dd5787566") },
-      (err, user) => {
-        if (err) return console.error("Unable to fetch a user");
-
-        console.log(user);
-      }
-    ); */
-
     db.collection("users")
-      .find({ age: "24" })
-      .count((err, users) => {
-        if (err) return console.error("Unable to fetch users");
-        console.log(users);
-      });
+      .updateOne(
+        {
+          _id: new ObjectId("61a9de37e316928dd5787566")
+        },
+        {
+          $set: {
+            age: 22
+          }
+        }
+      )
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => console.error(err));
   }
 );
