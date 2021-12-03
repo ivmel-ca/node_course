@@ -1,7 +1,6 @@
 // CRUD - create read update delete
 
-const mongodb = require("mongodb");
-const MongoClient = mongodb.MongoClient;
+const { MongoClient } = require("mongodb");
 
 // do not use localhost, or else expect unpredicted behavior
 const connectionURL = "mongodb://127.0.0.1:27017";
