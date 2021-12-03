@@ -31,5 +31,14 @@ MongoClient.connect(
         console.log(result);
       })
       .catch((err) => console.error(err));
+
+    db.collection("users")
+      .deleteMany({
+        age: "24"
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.error(err));
   }
 );
