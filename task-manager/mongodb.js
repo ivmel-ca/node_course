@@ -1,6 +1,6 @@
 // CRUD - create read update delete
 
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectId } = require("mongodb");
 
 // do not use localhost, or else expect unpredicted behavior
 const connectionURL = "mongodb://127.0.0.1:27017";
@@ -16,16 +16,20 @@ MongoClient.connect(
 
     const db = client.db(databaseName);
 
-    db.collection("users").insertOne(
-      {
-        name: "Ivan",
-        age: "24"
-      },
-      (err, result) => {
-        if (err) return console.error("Unable to insert user: ", err);
+    /* db.collection("users").findOne(
+      { _id: new ObjectId("61a9de37e316928dd5787566") },
+      (err, user) => {
+        if (err) return console.error("Unable to fetch a user");
 
-        console.log(result.insertedId);
+        console.log(user);
       }
-    );
+    ); */
+
+    db.collection("users")
+      .find({ age: "24" })
+      .count((err, users) => {
+        if (err) return console.error("Unable to fetch users");
+        console.log(users);
+      });
   }
 );
