@@ -7,6 +7,7 @@
   "author": "ivmel.ca",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^4.2.1"
+    "mongodb": "^4.2.1",
+    "validator": "^13.7.0"
   }
 }
